@@ -1,0 +1,3 @@
+com\fpmislata\service\PersonaService.class
+com\fpmislata\domain\Persona.class
+com\fpmislata\service\PersonaServiceLocal.class
