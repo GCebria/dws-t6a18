@@ -53,7 +53,7 @@ public class ControllerPersona extends HttpServlet {
             altaPersona(request, response);
         }else if (userPath.equals("/EliminarPersona")){
             eliminarPersona(request,response);
-        }else if (userPath.equals("/ModificarPerson")){
+        }else if (userPath.equals("/ModificarPersona")){
             modificarPersona(request, response);
         }
         
