@@ -6,17 +6,30 @@
 package com.fpmislata.domain;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  *
  * @author lodiade
  */
+@Entity
+@NamedQueries({ @NamedQuery(name = "Persona.findAll", query= "SELECT p from Persona p ORDER BY p.id")})
+@Table( name = "personas" )
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @Column(nullable=false, length = 45)
     private String nombre;
+    
+    @Column(length=45)
     private String email;
+    
+    @Column(length=20)
     private String telefono;   
 
     public int getId() {
