@@ -24,6 +24,7 @@
 		
 		<label for="telefono">Teléfono:</label>
 		<input type="text" name="telefono" style="display: block;"/>
+
 		
 		<input type="submit" value="Enviar" />
 	</form>

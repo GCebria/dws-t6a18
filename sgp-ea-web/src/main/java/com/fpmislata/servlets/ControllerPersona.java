@@ -5,11 +5,13 @@
  */
 package com.fpmislata.servlets;
 
+import com.fpmislata.domain.Documento;
 import com.fpmislata.domain.Persona;
 import com.fpmislata.service.PersonaServiceLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -68,12 +70,15 @@ public class ControllerPersona extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String email = request.getParameter("email");
         String telefono = request.getParameter("telefono");
+        String dni = request.getParameter("dni");
 
         //2. Creamos el objeto Persona
         Persona persona = new Persona();
         persona.setNombre(nombre);
         persona.setEmail(email);
         persona.setTelefono(telefono);
+        
+
 
         try {            
             //Si ya existe el email no deberia registrarse
@@ -84,8 +89,11 @@ public class ControllerPersona extends HttpServlet {
         }
 
         // Volvemos a cargar la lista de personas
-	ArrayList<Persona> lista = personaService.listPersonas();
-	request.setAttribute("personas", lista);
+            // Ejecutamos el metodo y obtenemos la lista
+            List lista = personaService.listPersonas();
+            ArrayList<Persona> listaArray = new ArrayList<>(lista);
+            // Asignamos al request el atributo lista
+            request.getSession().setAttribute("personas",listaArray);
 
 	request.getRequestDispatcher("/listarPersonas.jsp").forward(request,response);   
         
@@ -110,9 +118,11 @@ public class ControllerPersona extends HttpServlet {
         }
 
         // Ejecutamos el metodo y obtenemos la lista
-        ArrayList lista = personaService.listPersonas();
-        // Asignamos al request el atributo lista
-        request.getSession().setAttribute("personas", lista);
+            // Ejecutamos el metodo y obtenemos la lista
+            List lista = personaService.listPersonas();
+            ArrayList<Persona> listaArray = new ArrayList<>(lista);
+            // Asignamos al request el atributo lista
+            request.getSession().setAttribute("personas",listaArray);
         // Pasamos al RequestDispatcher la pagina a cargar
         RequestDispatcher rd = request.getRequestDispatcher("/listarPersonas.jsp");
         // Cargamos la pagina
@@ -152,6 +162,7 @@ public class ControllerPersona extends HttpServlet {
             String nombre = request.getParameter("nombre");
             String email = request.getParameter("email");
             String telefono = request.getParameter("telefono");
+            String dni = request.getParameter("dni");
 
             //2. Creamos el objeto Persona
             Persona persona = new Persona();
@@ -160,6 +171,8 @@ public class ControllerPersona extends HttpServlet {
             persona.setNombre(nombre);
             persona.setEmail(email);
             persona.setTelefono(telefono);
+            
+
 
             try {
                 this.personaService.updatePersona(persona);
@@ -169,8 +182,11 @@ public class ControllerPersona extends HttpServlet {
             }
 
             // Volvemos a cargar la lista de personas
-            ArrayList<Persona> lista = personaService.listPersonas();
-            request.setAttribute("personas", lista);
+            // Ejecutamos el metodo y obtenemos la lista
+            List lista = personaService.listPersonas();
+            ArrayList<Persona> listaArray = new ArrayList<>(lista);
+            // Asignamos al request el atributo lista
+            request.getSession().setAttribute("personas",listaArray);
 
             request.getRequestDispatcher("/listarPersonas.jsp").forward(request, response);
         }
@@ -179,9 +195,10 @@ public class ControllerPersona extends HttpServlet {
             throws ServletException, IOException {
         try{
             // Ejecutamos el metodo y obtenemos la lista
-            ArrayList lista = personaService.listPersonas();
+            List lista = personaService.listPersonas();
+            ArrayList<Persona> listaArray = new ArrayList<>(lista);
             // Asignamos al request el atributo lista
-            request.getSession().setAttribute("personas",lista);
+            request.getSession().setAttribute("personas",listaArray);
             // Pasamos al RequestDispatcher la pagina a cargar
             RequestDispatcher rd = request.getRequestDispatcher("/listarPersonas.jsp");
             // Cargamos la pagina

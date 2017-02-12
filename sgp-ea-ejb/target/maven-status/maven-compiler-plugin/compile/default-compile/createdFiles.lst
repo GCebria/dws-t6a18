@@ -1,3 +1,8 @@
+com\fpmislata\repository\PersonaDaoImpLocal.class
 com\fpmislata\service\PersonaService.class
-com\fpmislata\domain\Persona.class
+com\fpmislata\domain\Documento.class
+com\fpmislata\domain\Persona_.class
 com\fpmislata\service\PersonaServiceLocal.class
+com\fpmislata\domain\Documento_.class
+com\fpmislata\repository\PersonaDaoImp.class
+com\fpmislata\domain\Persona.class

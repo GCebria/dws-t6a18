@@ -21,6 +21,7 @@ public class Persona implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_persona")
     private int id;
     
     @Column(nullable=false, length = 45)
@@ -31,6 +32,12 @@ public class Persona implements Serializable {
     
     @Column(length=20)
     private String telefono;   
+    
+    
+//    //RELACION 1 a 1 con tabla documentos
+//    @OneToOne(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+//    @PrimaryKeyJoinColumn
+//    private Documento documento;
 
     public int getId() {
         return id;
@@ -66,6 +73,15 @@ public class Persona implements Serializable {
 
     public Persona() {
     }
+
+    public Persona(int id, String nombre, String email, String telefono, Documento documento) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.telefono = telefono;
+    }
+    
+    
 
     public Persona(int id, String nombre, String email, String telefono) {
         this.id = id;
@@ -103,4 +119,6 @@ public class Persona implements Serializable {
     public String toString() {
         return "Persona{" + "id=" + id + ", nombre=" + nombre + ", email=" + email + ", telefono=" + telefono + '}';
     }
+
+
 }

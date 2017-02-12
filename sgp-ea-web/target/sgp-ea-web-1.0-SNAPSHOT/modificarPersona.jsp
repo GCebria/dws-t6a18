@@ -22,6 +22,8 @@
 
         <label for="telefono">Teléfono:</label>
         <input type="text" name="telefono" value="${persona.telefono}" style="display: block;"/>
+        
+
 
         <input type="submit" name="guardar" value="guardar">
     </form>
